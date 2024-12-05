@@ -11,11 +11,11 @@
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MyApp.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/task-tracker-cli.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TaskTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaskTracker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
