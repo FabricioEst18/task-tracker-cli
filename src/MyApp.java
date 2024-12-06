@@ -1,6 +1,6 @@
 public class MyApp {
     public static void main(String[] args) {
-        TaskTracker taskTracker = new TaskTracker();
+        TaskManager taskTracker = new TaskManager();
         taskTracker.listTasks("Done");
         taskTracker.quit();
     }
