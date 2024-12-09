@@ -1,15 +1,19 @@
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 public class Task {
     private static int lastId = 0;  // Static variable to keep track of the last ID assigned
     private int id;
     private String description;
     private Status status;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Task(String description) {
         this.id = ++lastId;
         this.description = description;
         this.status = Status.TODO;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     public int getId() {
@@ -18,14 +22,17 @@ public class Task {
 
     public void markInProgress() {
         this.status = Status.IN_PROGRESS;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public void markDone() {
         this.status = Status.DONE;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public void updateDescription(String description) {
         this.description = description;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public String toJson() {
@@ -39,7 +46,7 @@ public class Task {
         String description = json1[3];
         Status status;
         String s = json1[5].strip();
-        if (s.equals("Todo")){
+        if (s.equals("Todo")) {
             status = Status.TODO;
         } else if (s.equals("In progress")) {
             status = Status.IN_PROGRESS;
@@ -50,7 +57,7 @@ public class Task {
         task.id = Integer.parseInt(id);
         task.status = status;
 
-        if (Integer.parseInt(id) > lastId){
+        if (Integer.parseInt(id) > lastId) {
             lastId = Integer.parseInt(id);
         }
         return task;
@@ -62,5 +69,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return "id: " + id + ", description: " + description.strip() + ", status: " + status.toString();    }
+        return "id: " + id + ", description: " + description.strip() + ", status: " + status.toString();
+    }
 }
