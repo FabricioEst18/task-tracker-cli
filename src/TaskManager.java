@@ -3,9 +3,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class TaskManager {
-    private final Path FILE_PATH = Path.of("D:/Repositorios/task-tracker-cli/tasks.json");
+    private final Path FILE_PATH = Path.of("tasks.json");
     private List<Task> tasks;
 
     public TaskManager() {
@@ -62,22 +63,22 @@ public class TaskManager {
     }
 
     public void updateTask(String id, String new_description) {
-        Task task = findTask(id);
+        Task task = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found!"));
         task.updateDescription(new_description);
     }
 
     public void deleteTask(String id) {
-        Task task = findTask(id);
+        Task task = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found!"));
         tasks.remove(task);
     }
 
     public void markInProgress(String id) {
-        Task task = findTask(id);
+        Task task = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found!"));
         task.markInProgress();
     }
 
     public void markDone(String id) {
-        Task task = findTask(id);
+        Task task = findTask(id).orElseThrow(() -> new IllegalArgumentException("Task with ID " + id + " not found!"));
         task.markDone();
     }
 
@@ -90,12 +91,7 @@ public class TaskManager {
         }
     }
 
-    public Task findTask(String id) throws IllegalArgumentException {
-        for (Task task : tasks) {
-            if (task.getId() == Integer.parseInt(id)){
-                return task;
-            }
-        }
-        throw new IllegalArgumentException("Task with ID " + id + " not found!");
+    public Optional<Task> findTask(String id) {
+        return tasks.stream().filter((task) -> task.getId() == Integer.parseInt(id)).findFirst();
     }
 }
